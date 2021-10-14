@@ -7,12 +7,8 @@ import { getBaseName } from '@redhat-cloud-services/frontend-components-utilitie
 import logger from 'redux-logger';
 
 const AppEntry = () => (
-  <Provider
-    store={init(
-      ...(process.env.NODE_ENV !== 'production' ? [logger] : [])
-    ).getStore()}
-  >
-    <Router basename={getBaseName(window.location.pathname)}>
+  <Provider store={init(...(process.env.NODE_ENV !== 'production' ? [logger] : [])).getStore()}>
+    <Router basename={getBaseName(window.location.pathname, 1)}>
       <App />
     </Router>
   </Provider>
